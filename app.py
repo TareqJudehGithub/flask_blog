@@ -19,9 +19,11 @@ def index():
 
 
 # Create a custom route
-@app.route("/user/<string:name>")
-def user(name):
-    return render_template("user.html", user_name=name)
+@app.route("/user")
+def user():
+    names = ["john", "sarah", "emma", "jennah", "noor", "dina", "leen"]
+
+    return render_template("user.html", users=names)
 
 
 # Creating a grocery list route page:

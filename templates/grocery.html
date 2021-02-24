@@ -5,15 +5,18 @@
     <title>Grocery List</title>
 </head>
 <body>
-<h1>Grocery List</h1>
-<div>
-    <ul>
-        {% for item in grocery %}
-            {% if item is string %}
-            <li style="list-style: none">{{ item | title}}</li>
-            {% endif %}
-        {% endfor %}
-    </ul>
-</div>
+    {% extends "base.html" %}
+    {% block content %}
+        <h1>Grocery List</h1>
+        <div>
+            <ul>
+                {% for item in grocery %}
+                    {% if item is string %}
+                        <li style="list-style: none">{{ item | title}}</li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% endblock %}
 </body>
 </html>

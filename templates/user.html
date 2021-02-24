@@ -5,8 +5,23 @@
     <title>Users page</title>
 </head>
 <body>
-<h1>Users page</h1>
-<p>Hello, {{ user_name | title}}!</p>
+    {% extends "base.html" %}
+    {% block content %}
+        <h1>Users page</h1>
+        {% for user in users %}
+            <div class="container text-center">
+                <figure>
+                    <img src="https://robohash.org/{{ user | lower }}">
+                    <figcaption>
+                        <p>{{ user | title }}</p>
+                    </figcaption>
+                </figure>
 
+
+            </div>
+
+        {% endfor %}
+{#        <p>Hello, {{ user_name | title}}!</p>#}
+    {% endblock %}
 </body>
 </html>

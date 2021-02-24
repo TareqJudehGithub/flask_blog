@@ -8,9 +8,10 @@
     <title>Page not found</title>
 </head>
 <body>
-<h2>This page you requested is not found</h2>
-
-<a href="{{ url_for("index") }}">Back to main</a>
-
+    {% extends "base.html" %}
+    {% block content %}
+        <h2>This page you requested is not found</h2>
+        <a href="{{ url_for("index") }}">Back to main</a>
+    {% endblock %}
 </body>
 </html>
