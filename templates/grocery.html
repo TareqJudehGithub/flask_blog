@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Grocery List</title>
+    {% extends "base.html" %}
+    {% block head %}
+        {{ super() }}
+    {% endblock %}
 </head>
 <body>
-    {% extends "base.html" %}
+
     {% block content %}
         <h1>Grocery List</h1>
-        <div>
+        <div class="grocery">
             <ul>
                 {% for item in grocery %}
                     {% if item is string %}
-                        <li style="list-style: none">{{ item | title}}</li>
+                        <li>{{ item | title}}</li>
                     {% endif %}
                 {% endfor %}
             </ul>

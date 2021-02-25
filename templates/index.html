@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>My blog</title>
+   {% extends "base.html" %}
+    {% block head %}
+        {{ super() }}
+    {% endblock %}
 </head>
 <body>
-    {% extends "base.html" %}
     {% block content %}
         <h1>This is my Blog webpage!!!</h1>
         <p>Hello, {{ first_name | title }}</p>
         <p>{{ stuff | striptags }}</p>
     {% endblock %}
 </body>
+
 </html>

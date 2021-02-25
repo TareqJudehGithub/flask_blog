@@ -1,0 +1,13 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #f6d1d6;
+    padding: 25px;
+    margin-top: 25px;
+}
+.grocery li {
+    list-style: none;
+}

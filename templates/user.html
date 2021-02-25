@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Users page</title>
+    {% extends "base.html" %}
+    {% block head %}
+        {{ super() }}
+    {% endblock %}
 </head>
 <body>
-    {% extends "base.html" %}
+
     {% block content %}
         <h1>Users page</h1>
         {% for user in users %}
@@ -16,12 +18,8 @@
                         <p>{{ user | title }}</p>
                     </figcaption>
                 </figure>
-
-
             </div>
-
         {% endfor %}
-{#        <p>Hello, {{ user_name | title}}!</p>#}
     {% endblock %}
 </body>
 </html>

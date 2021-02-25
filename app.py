@@ -1,7 +1,11 @@
 from flask import Flask, render_template
+from datetime import datetime
+
+
 
 # Create a flask instance
 app = Flask(__name__)
+year = datetime.now().year
 
 
 # Create a route decorator
@@ -43,6 +47,11 @@ def page_not_found(error):
 @app.errorhandler(500)
 def server_error(error):
     return render_template("500.html"), 500
+
+# Adding year to base.html page
+@app.route("/base")
+def add_year():
+    return render_template("base.html", year=year)
 
 
 if __name__ == '__main__':
