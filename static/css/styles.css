@@ -4,10 +4,17 @@
     box-sizing: border-box;
 }
 body {
-    background-color: #f6d1d6;
+    background-color: #f4f4f4;
     padding: 25px;
     margin-top: 25px;
 }
+h1 {
+    color: #403f3f;
+}
 .grocery li {
     list-style: none;
+}
+#demo {
+    font-size: 12px;
+    color: blue;
 }

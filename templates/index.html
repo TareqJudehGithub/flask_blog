@@ -8,7 +8,24 @@
 </head>
 <body>
     {% block content %}
-        <h1>This is my Blog webpage!!!</h1>
+        {% for message in get_flashed_messages() %}
+            <div class="container">
+                <div class="alert alert-secondary" role="alert">
+                    <h1>{{ message }}</h1>
+                </div>
+
+            </div>
+             <div class="container">
+
+                            <img src="{{ url_for('static', filename='images/blog.jpg') }}"
+                                 alt="blog"
+                                 class="img-fluid rounded"
+                            >
+            </div>
+            
+        {% endfor %}
+
+
         <p>Hello, {{ first_name | title }}</p>
         <p>{{ stuff | striptags }}</p>
     {% endblock %}
