@@ -5,16 +5,22 @@
 }
 body {
     background-color: #f4f4f4;
-    padding: 25px;
-    margin-top: 25px;
+    /*padding: 25px;*/
+}
+.container {
+    margin-top: 50px;
 }
 h1 {
     color: #403f3f;
 }
-.grocery li {
-    list-style: none;
-}
+
 #demo {
     font-size: 12px;
     color: blue;
+}
+.users-list {
+
+}
+.users {
+   background-color: lightpink;
 }

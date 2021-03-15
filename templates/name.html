@@ -13,16 +13,15 @@
         {% if name %}
             <h4>Thank you, {{ name }}!</h4>
             {% for message in get_flashed_messages() %}
-            <div class="container">
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                <p>{{ message }}</p>
-            </div>
-                <img class="img-fluid" src="{{ url_for('static', filename='images/blog.jpg') }}" alt="blog">
-                <p id="demo">This is some stuff..</p>
-            </div>
-
-        {% endfor %}
+                <div class="container">
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <p>{{ message }}</p>
+                    </div>
+                    <img class="img-fluid" src="{{ url_for('static', filename='images/blog.jpg') }}" alt="blog">
+                    <p id="demo">This is some stuff..</p>
+                </div>
+            {% endfor %}
 
         {% else %}
             <p>What's your name?</p>
