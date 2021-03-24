@@ -33,7 +33,6 @@
         <section>
             <h2>Users list</h2>
 
-
                     <div class="text-center">
                         <div class="row">
                             {% for user in users_list %}
@@ -41,13 +40,21 @@
                                         class=" col-lg-3 col-md-4 col-sm-6  shadow p-3 bg-body rounded m-3 users-list"
                                         style="width: 250px"
                                 >
-                                    <figure class="users">
-                                        <img class="img-fluid" src="https://robohash.org/{{ user.id }}" alt="user">
+                                    <a href="{{ url_for("update", user_id=user.id) }}">
+                                         <figure class="users">
+
+                                        <img
+                                                class="img-fluid"
+                                                src="https://robohash.org/{{ user.id }}"
+                                                alt="user"
+                                        >
                                         <figcaption>
                                             <h4 >{{ user.user | title }}</h4>
                                             <p>{{ user.email | lower }}</p>
                                         </figcaption>
                                     </figure>
+                                    </a>
+
                                 </div>
                             {% endfor %}
                         </div>

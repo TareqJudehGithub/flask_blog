@@ -1,4 +1,4 @@
-from flask import Flask, render_template, flash
+from flask import Flask, render_template, flash, redirect
 
 # Flask wtforms:
 from flask_wtf import FlaskForm
@@ -9,8 +9,8 @@ from wtforms.fields.html5 import EmailField
 # Flask SQL Alchemy:
 from flask_sqlalchemy import SQLAlchemy
 
-
 from datetime import datetime
+from time import sleep
 import os
 
 
@@ -25,7 +25,11 @@ year = datetime.now().year
 date = datetime.now().date()
 
 # SQL alchemy initialization:
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///users.db"
+# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///users.db"
+
+
+# MySQL DB:
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:pass123@localhost/mysqlusers"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app=app)
 
@@ -67,7 +71,7 @@ def index():
     )
 
 
-# Create a custom route
+# Create/ADD a new record to DB:
 @app.route("/user/add", methods=["GET", "POST"])
 def add_user():
     form = UsersForm()
@@ -90,7 +94,6 @@ def add_user():
             form.email.data = ""
             message = flash("User added successfully!")
 
-
         except:
             return "Error saving user in the database."
         else:
@@ -112,6 +115,36 @@ def add_user():
         users_list=users_list,
         year=year
     )
+
+# Update DB records:
+@app.route("/update/<int:user_id>", methods=["GET", "POST"])
+def update(user_id):
+    form = UsersForm()
+    user_name = form.user.data
+    name_to_update = Users.query.get_or_404(user_id)
+    if form.validate_on_submit():
+        name_to_update.user = form.user.data
+        name_to_update.email = form.email.data
+        try:
+            db.session.commit()
+            flash("hi!")
+            sleep(2)
+        except:
+            return "Error updating records."
+
+        else:
+
+            return redirect("/user/add")
+
+
+    else:
+        return render_template(
+            "update_user.html",
+            form=form,
+            name_to_update=name_to_update,
+            user_id=user_id,
+            user_name=user_name,
+        )
 
 
 # Create Name page:
